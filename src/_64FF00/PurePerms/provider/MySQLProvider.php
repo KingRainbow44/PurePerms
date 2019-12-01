@@ -36,11 +36,11 @@ class MySQLProvider implements ProviderInterface
 
         $mySQLSettings = $this->plugin->getConfigValue("mysql-settings");
 
-        if(!isset($mySQLSettings["host"]) || !isset($mySQLSettings["port"]) || !isset($mySQLSettings["user"]) || !isset($mySQLSettings["password"]) || !isset($mySQLSettings["db"]))
+        if(!isset($mySQLSettings["host"]) || !isset($mySQLSettings["user"]) || !isset($mySQLSettings["password"]) || !isset($mySQLSettings["db"]))
             throw new \RuntimeException("Failed to connect to the MySQL database: Invalid MySQL settings");
 
 
-        $this->db = new \mysqli($mySQLSettings["host"], $mySQLSettings["user"], $mySQLSettings["password"], $mySQLSettings["db"], $mySQLSettings["port"]);
+        $this->db = new \mysqli("localhost", "pureperms", "wordpass12", "pureperms");
 
         if($this->db->connect_error)
             throw new \RuntimeException("Failed to connect to the MySQL database: " . $this->db->connect_error);
